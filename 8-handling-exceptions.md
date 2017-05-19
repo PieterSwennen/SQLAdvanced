@@ -1,4 +1,4 @@
-# H8 Handling Exceptions
+# 8 Handling Exceptions
 
 ## Exception - Example
 

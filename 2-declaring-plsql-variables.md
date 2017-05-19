@@ -1,4 +1,4 @@
-# H2 Declaring PLSQL Variables
+# 2 Declaring PLSQL Variables
 
 ## Exercise 2
 

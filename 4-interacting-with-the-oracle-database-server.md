@@ -1,4 +1,4 @@
-# H4 Interacting with the oracle database server
+# 4 Interacting with the oracle database server
 
 ## Exercise 1
 

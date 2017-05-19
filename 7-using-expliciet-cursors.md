@@ -1,4 +1,4 @@
-# H7 Using Explicit Cursors
+# 7 Using Explicit Cursors
 
 ## Cursor Loop - Example
 

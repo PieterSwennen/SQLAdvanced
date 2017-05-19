@@ -1,4 +1,4 @@
-# H3 Writing Executable Statements
+# 3 Writing Executable Statements
 
 ## Sequences p.9
 

@@ -1,4 +1,4 @@
-# H6 Working with Composite Data Types
+# 6 Working with Composite Data Types
 
 ## Exercise 1
 
