@@ -30,9 +30,11 @@ BEGIN
   FROM countries
   WHERE country_id = UPPER(v_country_id);
 
-  DBMS_OUTPUT.PUT_LINE('Country Id: ' || v_country_rec.country_id ||
-                        ' Country Name: ' || v_country_rec.country_name ||
-                        ' Region: ' || v_country_rec.region_id);
+  DBMS_OUTPUT.PUT_LINE(  
+    'Country Id: ' || v_country_rec.country_id ||
+    ' Country Name: ' || v_country_rec.country_name ||
+    ' Region: ' || v_country_rec.region_id
+  );
 END;
 ```
 
@@ -83,7 +85,8 @@ END;
 
 ```sql
 DECLARE
-    TYPE dept_table_type IS TABLE OF departments.department_name%TYPE INDEX BY PLS_INTEGER;
+    TYPE dept_table_type 
+      IS TABLE OF departments.department_name%TYPE INDEX BY PLS_INTEGER;
     my_dept_table  dept_table_type;
     loop_count     NUMBER(2) := 10;
     deptno         NUMBER(4) := 0;
@@ -92,7 +95,7 @@ BEGIN
     LOOP
         deptno := 10 + deptno;
         SELECT department_name
-    INTO my_dept_table(i)
+        INTO my_dept_table(i)
         FROM departments
         WHERE department_id = deptno;
     END LOOP;
@@ -127,7 +130,8 @@ END;
 
 ```sql
 DECLARE
-    TYPE dept_table_type IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
+    TYPE dept_table_type 
+      IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
     my_dept_table  dept_table_type;
     loop_count     NUMBER(2) := 10;
     deptno         NUMBER(4) := 0;
@@ -142,10 +146,12 @@ BEGIN
 
     FOR j IN 1..loop_count
     LOOP
-        DBMS_OUTPUT.PUT_LINE('Department Number: ' || my_dept_table(j).department_id ||
-                          ' Department Name: ' || my_dept_table(j).department_name ||
-                          ' Manager Id: ' || my_dept_table(j).manager_id ||
-                          ' Location Id: ' || my_dept_table(j).location_id);
+      DBMS_OUTPUT.PUT_LINE( 
+        'Department Number: ' || my_dept_table(j).department_id ||
+        ' Department Name: ' || my_dept_table(j).department_name ||
+        ' Manager Id: ' || my_dept_table(j).manager_id ||
+        ' Location Id: ' || my_dept_table(j).location_id
+      );
     END LOOP;
 END;
 ```
@@ -172,7 +178,7 @@ BEGIN
       THEN
       DBMS_OUTPUT.PUT_LINE(v_ename_table(i));
     ELSE
-      DBMS_OUTPUT.PUT_LINE('De rij met index '|| i ||' bestaat niet.');
+      DBMS_OUTPUT.PUT_LINE('Rij '|| i ||' bestaat niet.');
     END IF;
   END LOOP;
 END;
@@ -185,8 +191,10 @@ END;
 
 ```sql
 DECLARE
-  TYPE ename_table_type IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
-  TYPE datum_table_type IS TABLE OF DATE INDEX BY VARCHAR2(20);
+  TYPE ename_table_type 
+    IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
+  TYPE datum_table_type 
+    IS TABLE OF DATE INDEX BY VARCHAR2(20);
 
   v_ename_table   ename_table_type;
   v_datum_table   datum_table_type;
@@ -203,7 +211,7 @@ BEGIN
       THEN
         DBMS_OUTPUT.PUT_LINE(v_ename_table(i));
       ELSE
-        DBMS_OUTPUT.PUT_LINE('De rij met index '|| i ||'  bestaat niet.');
+        DBMS_OUTPUT.PUT_LINE('Rij '|| i ||'  bestaat niet.');
       END IF;
   END LOOP;
 
@@ -224,9 +232,12 @@ END;
 
 ```sql
 DECLARE
-  TYPE lastname_table_type IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
-  TYPE datum_table_type IS TABLE OF DATE INDEX BY VARCHAR2(20);
-  TYPE ename_table_type IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
+  TYPE lastname_table_type 
+    IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
+  TYPE datum_table_type 
+    IS TABLE OF DATE INDEX BY VARCHAR2(20);
+  TYPE ename_table_type 
+    IS TABLE OF employees.last_name%TYPE INDEX BY PLS_INTEGER;
 
   v_ename_table       ename_table_type;
   v_aantal_rijen      INTEGER;
@@ -245,7 +256,7 @@ BEGIN
       THEN
         DBMS_OUTPUT.PUT_LINE(v_ename_table(i));
     ELSE
-        DBMS_OUTPUT.PUT_LINE('De rij met index '|| i ||'  bestaat niet.');
+        DBMS_OUTPUT.PUT_LINE('Rij '|| i ||'  bestaat niet.');
     END IF;
   END LOOP;
 
@@ -267,25 +278,29 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(v_lastname_table(i));
   END LOOP;
 
-  DBMS_OUTPUT.PUT_LINE('Het aantal records in de tabel: '||v_datum_table.COUNT);
+  DBMS_OUTPUT.PUT_LINE('Aantal records tabel: '||v_datum_table.COUNT);
 
   v_aantal_rijen:= v_ename_table.count;
   v_index:= v_ename_table.first;
 
   WHILE v_index IS NOT NULL LOOP
-    DBMS_OUTPUT.PUT_LINE(v_index ||'  '||v_ename_table(v_index));
+    DBMS_OUTPUT.PUT_LINE( 
+      v_index ||'  '||
+      v_ename_table(v_index)
+    );
     v_index:= v_ename_table.next(v_index);
   END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 2
 
 > Gebruik een collection om bepaalde gegevens van alle departementen die gevestigd zijn in de US af te drukken.
 
 ```sql
 DECLARE
-  TYPE dept_table_type IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE dept_table_type 
+    IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
 
   my_dept_table dept_table_type;
   v_index_dept pls_integer;
@@ -300,12 +315,13 @@ BEGIN
   ON d.location_id = l.location_id
   WHERE country_id = 'US';
 
-/* Let op: in bovenstaande select krijg je wel een foutmelding als je in de join using(location_id) wil gebruiken*/
   FOR i IN 1 .. my_dept_table.count LOOP   
-      DBMS_OUTPUT.PUT_LINE('Dept number : '|| my_dept_table(i).department_id||
-                          'Dept name : '|| my_dept_table(i).department_name||
-                          'Manager id : '|| my_dept_table(i).manager_id||
-                          'Location id : '||my_dept_table(i).location_id);
+      DBMS_OUTPUT.PUT_LINE(
+        'Dept nr : '|| my_dept_table(i).department_id||
+        'Dept name : '|| my_dept_table(i).department_name||
+        'Manager id : '|| my_dept_table(i).manager_id||
+        'Location id : '||my_dept_table(i).location_id
+      );
   END LOOP;
 END;
 ```

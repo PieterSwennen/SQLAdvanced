@@ -16,8 +16,10 @@ SELECT reg_regid_seq.nextval FROM dual
 
 ```sql
 DECLARE
-  v_curr_id regions.region_id%type NOT NULL :=  reg_regid_seq.currval;
-  v_new_id  regions.region_id%type NOT NULL :=  reg_regid_seq.nextval;
+  v_curr_id regions.region_id%type 
+    NOT NULL :=  reg_regid_seq.currval;
+  v_new_id  regions.region_id%type 
+    NOT NULL :=  reg_regid_seq.nextval;
 BEGIN
   dbms_output.put_line(‘Het huidige region_id is ‘|| v_curr_id);
   dbms_output.put_line(‘Het volgende region_id is ‘|| v_new_id);
@@ -49,9 +51,11 @@ BEGIN
       v_job_id,
       v_dep_id
     );
-  DBMS_OUTPUT.PUT_LINE('Employee '||v_emp_id|| 
-                        ' is gestart op '|| TO_CHAR(v_start_datum,'d month yyyy')|| 
-                        ' in het departement ' || v_dep_id);
+  DBMS_OUTPUT.PUT_LINE(  
+    'Employee '||v_emp_id|| 
+    ' gestart '|| TO_CHAR(v_start_datum,'d month yyyy')|| 
+    ' in departement ' || v_dep_id
+  );
 END;
 ROLLBACK;
 ```
@@ -109,7 +113,9 @@ BEGIN
   WHERE employee_id=110;
   DBMS_OUTPUT.PUT_LINE('Hello ' || v_fname);
   DBMS_OUTPUT.PUT_LINE('YOUR SALARY IS : ' || v_emp_sal);
-  DBMS_OUTPUT.PUT_LINE('YOUR CONTRIBUTION TOWARDS PF : ' || ((v_emp_sal * (v_basic_percent/100)) * (v_pf_percent/100)));
+  DBMS_OUTPUT.PUT_LINE(
+    'YOUR CONTRIBUTION TOWARDS PF : ' || 
+      ((v_emp_sal * (v_basic_percent/100)) * (v_pf_percent/100)));
   /*
   DBMS_OUTPUT.PUT_LINE('TODAY IS' || v_today);
   v_tomorrow := v_today + 1;

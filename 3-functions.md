@@ -1,9 +1,10 @@
 # 3 Creating Functions
 ## Function - Example
 ```sql
-CREATE OR REPLACE FUNCTION get_sal (p_id employees.employee_id%TYPE)
- RETURN NUMBER IS
-  v_sal employees.salary%TYPE := 0;
+CREATE OR REPLACE 
+  FUNCTION get_sal (p_id employees.employee_id%TYPE)
+  RETURN NUMBER IS
+    v_sal employees.salary%TYPE := 0;
 BEGIN
   SELECT salary
   INTO   v_sal
@@ -80,7 +81,10 @@ Invoerparameter: familienaam van de werknemer waarvoor de jubileumsdatum opgezoc
 Wanneer een naam ingegeven wordt van iemand die geen werknemer is, mag er geen fout optreden, maar wordt teruggegeven ‘onbekende WN’.
 
 ```sql
-CREATE OR REPLACE FUNCTION get_jubileumdate(p_last_nameemployees.last_name%type)
+CREATE OR REPLACE 
+  FUNCTION get_jubileumdate(
+      p_last_nameemployees.last_name%type
+    )
   RETURN varchar2
   AS v_hire_date DATE;
 

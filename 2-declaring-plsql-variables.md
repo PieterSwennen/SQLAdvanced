@@ -134,10 +134,12 @@ BEGIN
   ON(e.department_id      = d.department_id)
   WHERE d.department_name = v_dept_name
   AND e.salary            = v_max_sal;
-  DBMS_OUTPUT.PUT_LINE(' Naam: '||v_lastname || 
-                        ' Voornaam :  ' || v_voornaam || 
-                        ' Salaris:  ' || v_salary || 
-                        ' Department naam : '||v_dept_name );
+  DBMS_OUTPUT.PUT_LINE(
+    ' Naam: '||v_lastname || 
+    ' Voornaam :  ' || v_voornaam || 
+    ' Salaris:  ' || v_salary || 
+    ' Department naam : '||v_dept_name 
+  );
 END;
 /
 PRINT b_dept_name

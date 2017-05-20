@@ -40,7 +40,7 @@ END;
 ```sql
 EXECUTE add_dept;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Using the `IN` parameter Mode - Example
 
 ```sql
@@ -58,7 +58,7 @@ END raise_salary;
 ```sql
 EXECUTE raise_salary(176,10)
 ```
-
+<div style="page-break-after: always;"></div>
 ## Using the 'OUT' parameter mode - Example
 
 ```sql
@@ -85,6 +85,7 @@ BEGIN
 END;
 ```
 
+<div style="page-break-after: always;"></div>
 ## Deel2: procedures: voorbeeldopgaven
 
 ### Opgave 1
@@ -104,11 +105,15 @@ BEGIN
   WHERE hire_date = (SELECT MIN(hire_date)
                      FROM employees);
 
-  DBMS_OUTPUT.PUT_LINE('Eerst aangeworven employee is'|| v_emp_id || '' || v_naam);
+  DBMS_OUTPUT.PUT_LINE(
+    'Eerst aangeworven employee: '|| v_emp_id || 
+    '' || v_naam
+  );
 
 END;
 ```
 
+<div style="page-break-after: always;"></div>
 ### Opgave 2
 
 > Schrijf een procedure die ervoor zorgt dat als in een bepaald land nieuwe wetgeving van kracht gaat ivm minimumlonen, de eventueel nodige salarisaanpassingen gemakkelijk in de databank doorgevoerd kunnen worden.  
@@ -146,7 +151,7 @@ variable aantal number
 set autoprint on
 exec minimumlonen('Canada', 7000, :aantal);
 ```
-
+<div style="page-break-after: always;"></div>
 ### Opgave 3
 
 > Schrijf een procedure die de naam van de procedure toont die het laatst aangemaakt werd.  
@@ -157,7 +162,8 @@ exec minimumlonen('Canada', 7000, :aantal);
 ```sql
 CREATE OR REPLACE PROCEDURE show_latest_procedure
 IS
-  TYPE user_source_table_text_type IS TABLE OF user_source.text%TYPE INDEX BY PLS_INTEGER;
+  TYPE user_source_table_text_type 
+    IS TABLE OF user_source.text%TYPE INDEX BY PLS_INTEGER;
 
   v_timestamp                 user_objects.timestamp%TYPE;
   v_object_name               user_objects.object_name%TYPE;
@@ -169,7 +175,9 @@ BEGIN
   INTO v_object_name, v_timestamp
   FROM user_objects
   WHERE object_type = 'PROCEDURE'
-  AND TIMESTAMP = (SELECT MAX(TIMESTAMP) FROM user_objects WHERE object_type = 'PROCEDURE');
+  AND TIMESTAMP = ( SELECT MAX(TIMESTAMP) 
+                    FROM user_objects 
+                    WHERE object_type = 'PROCEDURE');
 
   DBMS_OUTPUT.PUT_LINE('Datum: ' || v_timestamp);
   DBMS_OUTPUT.PUT_LINE('------------------------------');
@@ -200,7 +208,10 @@ BEGIN
    WHERE created = (SELECT max(created)
                     FROM user_objects);
 
-   DBMS_OUTPUT.PUT_LINE('De laatst aangemaakte procedure is '|| v_laatst_gem_proc);
+   DBMS_OUTPUT.PUT_LINE(
+     'De laatst aangemaakte procedure is '|| 
+      v_laatst_gem_proc
+    );
 
    SELECT MAX(line)                      -- code volledig tonen
       INTO v_maxlijnnr
@@ -245,7 +256,10 @@ BEGIN
 
    FOR i_lijnnr IN 1 .. t_lijnnr_code.count
    LOOP
-      DBMS_OUTPUT.PUT_LINE(t_lijnnr_code(i_lijnnr).line||' '||t_lijnnr_code(i_lijnnr).text);
+      DBMS_OUTPUT.PUT_LINE(
+        t_lijnnr_code(i_lijnnr).line||
+        ' '||t_lijnnr_code(i_lijnnr).text
+      );
    END LOOP;
 END;
 ```

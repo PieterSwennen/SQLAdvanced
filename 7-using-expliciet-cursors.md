@@ -22,7 +22,7 @@ BEGIN
   CLOSE c_emp_cursor;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Fetching data from the cursor - Example
 
 ```sql
@@ -54,7 +54,8 @@ DECLARE
 BEGIN
   FOR emp_record IN c_emp_cursor
   LOOP
-    DBMS_OUTPUT.PUT_LINE(emp_record.employee_id ||' '|| emp_record.last_name);
+    DBMS_OUTPUT.PUT_LINE( emp_record.employee_id ||' '|| 
+                          emp_record.last_name);
   END LOOP;
 END;
 ```

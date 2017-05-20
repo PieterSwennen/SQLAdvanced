@@ -16,9 +16,8 @@ EXCEPTION
     DBMS_OUTPUT.PUT_LINE('Your select statement retrieved multiple rows. Consider using a cursor');
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Non predefined error - Example
-
 ```sql
 DECLARE
   e_insert_excep EXCEPTION;
@@ -36,9 +35,8 @@ EXCEPTION
 
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Trapping user-definded Exceptions - Example
-
 ```sql
 DECLARE
   v_deptno                NUMBER        := 500;
@@ -100,14 +98,22 @@ BEGIN
        FROM jobs
        WHERE job_title='&jobtitel';
 
-       dbms_output.put_line('Het laagste en hoogste salaris van de job ' ||v_jobtitel||' is '|| v_minsal||' en '|| v_maxsal);
+       dbms_output.put_line(
+         'Laagste en hoogste salaris van ' ||v_jobtitel||
+         ' is '|| v_minsal||
+         ' en '|| v_maxsal
+       );
 
        SELECT job_id, min_salary, max_salary
        INTO v_jobid,v_minsal,v_maxsal
        FROM jobs
        WHERE job_id like 'SA%';
 
-       dbms_output.put_line('Het laagste en hoogste salaris van de job ' ||v_jobid||' is '|| v_minsal||' en '|| v_maxsal);
+       dbms_output.put_line(
+         'Laagste en hoogste salaris van ' ||v_jobid||
+         ' is '|| v_minsal||
+         ' en '|| v_maxsal
+       );
 
 EXCEPTION
        WHEN no_data_found
@@ -144,15 +150,14 @@ EXCEPTION
   WHEN dup_val_on_index THEN
     DBMS_OUTPUT.PUT_LINE('Dit land bestaat al.');
   WHEN e_onbekende_regio THEN
-    DBMS_OUTPUT.PUT_LINE('Regio_id komt niet voor in  tabel REGIONS');
+    DBMS_OUTPUT.PUT_LINE('Regio_id komt niet voor tabel REGIONS.');
   WHEN e_del_child THEN
-    DBMS_OUTPUT.PUT_LINE('Regio_id kan niet verwijderd worden wegens verwijzingen vanuit table countries');
+    DBMS_OUTPUT.PUT_LINE('Regio_id kan niet verwijderd worden.');
 ROLLBACK;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Excercise 3
-
 > A. Open hfst8\_oef1\_2.sql en pas deze oefening aan zodat het programma niet correct eindigt \(dus afgebroken wordt\) indien een fout optreedt. Bewaar als hfst8\_oef3\_1.sql
 
 ```sql
@@ -166,20 +171,27 @@ BEGIN
        INTO v_jobtitel,v_minsal,v_maxsal
        FROM jobs
        WHERE job_title='&jobtitel';
-       dbms_output.put_line('Het laagste en hoogste salaris van de job ' ||v_jobtitel||' is '|| v_minsal||' en '|| v_maxsal);
+       dbms_output.put_line(
+         'Laagste en hoogste salaris van ' ||v_jobtitel||
+         ' is '|| v_minsal||
+         ' en '|| v_maxsal
+       );
 
        SELECT job_id, min_salary, max_salary
        INTO v_jobid,v_minsal,v_maxsal
        FROM jobs
        WHERE job_id like 'SA%';
-       dbms_output.put_line('Het laagste en hoogste salaris van de job ' ||v_jobid||' is '|| v_minsal||' en '|| v_maxsal);
+       dbms_output.put_line(
+         'Laagste en hoogste salaris van ' ||v_jobid||
+         ' is '|| v_minsal||
+         ' en '|| v_maxsal);
 
 EXCEPTION
        WHEN no_data_found
-       THEN raise_application_error(-20001,'Deze functie bestaat niet.');
+       THEN raise_application_error(-20001,'Functie bestaat niet.');
 
        WHEN too_many_rows
-       THEN raise_application_error(-20002,'De functie die begint met SA komt meer dan 1 keer voor!');
+       THEN raise_application_error(-20002,'Komt meer dan 1x voor!');
 END;
 ```
 
@@ -217,10 +229,10 @@ BEGIN
        END IF;
 EXCEPTION
        WHEN e_geen_update then
-                     raise_application_error(-20003,'Er werden geen rijen geupdated!');
+                     raise_application_error(-20003,'Geen rijen geüpdatet!');
        WHEN e_update_teveel_rijen THEN
                      ROLLBACK;
-                     raise_application_error(-20004,'Teveel rijen geupdated. Update wordt niet uitgevoerd!');
+                     raise_application_error(-20004,'Teveel rijen geüpdatet. Update wordt niet uitgevoerd!');
        WHEN others THEN
                      error_code := sqlcode;
                      error_message :=sqlerrm;

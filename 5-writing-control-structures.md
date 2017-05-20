@@ -160,13 +160,14 @@ SET SERVEROUTPUT ON
 SET AUTOPRINT ON
 SET VERIFY OFF
 DECLARE
-  TYPE employee_table IS TABLE OF employees%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE employee_table 
+    IS TABLE OF employees%ROWTYPE INDEX BY PLS_INTEGER;
 
-  v_dep_name          departments.department_name%TYPE;
-  v_new_salary        employees.salary%TYPE;
-  v_employees         employee_table;
-  v_dep_id            departments.department_id%TYPE := '&department_id';
-  v_raise_percentage  NUMBER(2)                      := '&raise_percentage';
+  v_dep_name         departments.department_name%TYPE;
+  v_new_salary       employees.salary%TYPE;
+  v_employees        employee_table;
+  v_dep_id           departments.department_id%TYPE := '&department_id';
+  v_raise_percentage NUMBER(2)                      := '&raise_percentage';
 
 BEGIN
   SELECT department_name
@@ -211,24 +212,26 @@ END;
 DECLARE
    v_department_name departments.department_name%type;
    v_perc            number(3);
-   v_department_id   employees.department_id%type       :=  &departementid;
+   v_department_id   employees.department_id%type := &departementid;
 BEGIN
   SELECT department_name
   INTO v_department_name
   FROM departments
   WHERE department_id = v_department_id;
 
-  DBMS_OUTPUT.PUT_LINE('het gekozen departement is : ' || v_department_name);
+  DBMS_OUTPUT.PUT_LINE( 'het gekozen departement is : ' || 
+                         v_department_name);
 
   FOR lijn IN ( SELECT last_name, employee_id, salary
                 FROM employees
                 WHERE department_id = v_department_id)
-                  LOOP
-
-                  DBMS_OUTPUT.PUT_LINE( lijn.employee_id || ' ' ||
-                                        lijn.last_name || ': ' ||
-                                        lijn.salary);
-                  END LOOP;
+    LOOP
+      DBMS_OUTPUT.PUT_LINE( 
+        lijn.employee_id || ' ' ||
+        lijn.last_name || ': ' ||
+        lijn.salary
+      );
+    END LOOP;
 
   v_perc := &percentage;
 
@@ -242,11 +245,13 @@ BEGIN
   FOR lijn IN (SELECT last_name, employee_id, salary
                FROM employees
                WHERE department_id = v_department_id)
-               LOOP
-                DBMS_OUTPUT.PUT_LINE( lijn.employee_id || ' ' ||
-                                      lijn.last_name || ': '||
-                                      lijn.salary);
-               END LOOP;
+    LOOP
+      DBMS_OUTPUT.PUT_LINE( 
+        lijn.employee_id || ' ' ||
+        lijn.last_name || ': '||
+        lijn.salary
+      );
+    END LOOP;
 END;
 /
 ```
@@ -318,26 +323,26 @@ BEGIN
                   FROM locations
                   WHERE location_id
                   IN (SELECT location_id
-                      FROM departments)) LOOP
+                      FROM departments)) 
+    LOOP
+      SELECT country_name
+      INTO v_country_name
+      FROM countries
+      WHERE country_id = locrec.country_id;
 
-                  SELECT country_name
-                  INTO v_country_name
-                  FROM countries
-                  WHERE country_id = locrec.country_id;
+      DBMS_OUTPUT.PUT_LINE('==> ' ||locrec.location_id || ' ' || locrec.city
+                           || ' (' || v_country_name || ')');
 
-                  DBMS_OUTPUT.PUT_LINE('==> ' ||locrec.location_id || ' ' || locrec.city
-                                               || ' (' || v_country_name || ')');
-
-                  FOR deprec IN (SELECT department_name, count(*) aantal
+      FOR deprec IN (SELECT department_name, count(*) aantal
                                   FROM departments d
                                   JOIN employees e
                                   USING (department_id)
                                   WHERE d.location_id = locrec.location_id
-                                  GROUP BY department_name) LOOP
-
-                                    DBMS_OUTPUT.PUT_LINE(deprec.department_name || ': ' || deprec.aantal);
-                                END LOOP;
-                   END LOOP;
+                                  GROUP BY department_name) 
+        LOOP
+          DBMS_OUTPUT.PUT_LINE(deprec.department_name || ': ' || deprec.aantal);
+        END LOOP;
+     END LOOP;
 END;
 ```
 

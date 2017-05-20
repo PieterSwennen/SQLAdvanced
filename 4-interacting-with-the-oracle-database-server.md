@@ -23,7 +23,8 @@ BEGIN
   SELECT MAX(department_id)
   INTO v_max_deptno
   FROM departments;
-  DBMS_OUTPUT.PUT_LINE('THE maximum department_id is : ' || v_max_deptno);
+  DBMS_OUTPUT.PUT_LINE('THE maximum department_id is : ' || 
+                        v_max_deptno);
 END;
 ```
 <div style="page-break-after: always;"></div>
@@ -55,7 +56,7 @@ SQL%ROWCOUNT gives 1
 DECLARE
   v_max_deptno  departments.department_id%TYPE;
   v_dept_id     departments.department_id%TYPE;
-  v_dept_name   departments.department_name%TYPE  :=  'Education';
+  v_dept_name   departments.department_name%TYPE := 'Education';
 BEGIN
   SELECT MAX(department_id)
   INTO v_max_deptno
@@ -191,16 +192,18 @@ WHERE employee_id=176;
 BEGIN
     UPDATE employees
      SET salary = salary * 0.9
-     WHERE employee_id IN (SELECT manager_id
-                        FROM departments
-                        WHERE department_id IN (SELECT department_id
-                                                FROM departments
-                                                JOIN employees
-                                                USING (department_id)
-                                                GROUP BY  department_id
-                                                HAVING COUNT(*) <= 5)
-                      );
-DBMS_OUTPUT.PUT_LINE('Aantal salarisverlagingen : ' || SQL%ROWCOUNT);
+     WHERE employee_id 
+     IN (SELECT manager_id
+         FROM departments
+         WHERE department_id 
+         IN (SELECT department_id
+             FROM departments
+             JOIN employees
+             USING (department_id)
+             GROUP BY  department_id
+             HAVING COUNT(*) <= 5)
+             );
+DBMS_OUTPUT.PUT_LINE('Salarisverlagingen : ' || SQL%ROWCOUNT);
 END;
 ```
 
