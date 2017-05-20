@@ -338,15 +338,20 @@ BEGIN
       FROM countries
       WHERE country_id = locrec.country_id;
 
-      DBMS_OUTPUT.PUT_LINE('==> ' ||locrec.location_id || ' ' || locrec.city
-                           || ' (' || v_country_name || ')');
+      DBMS_OUTPUT.PUT_LINE(
+        '==> ' ||locrec.location_id || 
+        ' ' || locrec.city || 
+        ' (' || v_country_name || 
+        ')');
 
-      FOR deprec IN (SELECT department_name, count(*) aantal
-                                  FROM departments d
-                                  JOIN employees e
-                                  USING (department_id)
-                                  WHERE d.location_id = locrec.location_id
-                                  GROUP BY department_name) 
+      FOR deprec IN (
+        SELECT department_name, count(*) aantal
+        FROM departments d
+        JOIN employees e
+        USING (department_id)
+        WHERE d.location_id = locrec.location_id
+        GROUP BY department_name
+        ) 
         LOOP
           DBMS_OUTPUT.PUT_LINE(deprec.department_name || ': ' || deprec.aantal);
         END LOOP;
