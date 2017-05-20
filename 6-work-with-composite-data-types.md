@@ -37,7 +37,7 @@ BEGIN
   );
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 2
 
 > Create a PL/SQL block to retrieve the name of some `departments` from the departments table and  
@@ -86,7 +86,8 @@ END;
 ```sql
 DECLARE
     TYPE dept_table_type 
-      IS TABLE OF departments.department_name%TYPE INDEX BY PLS_INTEGER;
+      IS TABLE OF departments.department_name%TYPE 
+        INDEX BY PLS_INTEGER;
     my_dept_table  dept_table_type;
     loop_count     NUMBER(2) := 10;
     deptno         NUMBER(4) := 0;
@@ -106,7 +107,7 @@ BEGIN
     END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 3
 
 > Modify the block that you created in exercise 2 to retrieve all information about each department  
@@ -147,8 +148,8 @@ BEGIN
     FOR j IN 1..loop_count
     LOOP
       DBMS_OUTPUT.PUT_LINE( 
-        'Department Number: ' || my_dept_table(j).department_id ||
-        ' Department Name: ' || my_dept_table(j).department_name ||
+        'Dept Number: ' || my_dept_table(j).department_id ||
+        ' Dept Name: ' || my_dept_table(j).department_name ||
         ' Manager Id: ' || my_dept_table(j).manager_id ||
         ' Location Id: ' || my_dept_table(j).location_id
       );
