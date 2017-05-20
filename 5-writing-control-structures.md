@@ -166,8 +166,12 @@ DECLARE
   v_dep_name         departments.department_name%TYPE;
   v_new_salary       employees.salary%TYPE;
   v_employees        employee_table;
-  v_dep_id           departments.department_id%TYPE := '&department_id';
-  v_raise_percentage NUMBER(2)                      := '&raise_percentage';
+  
+  v_dep_id           
+    departments.department_id%TYPE := '&department_id';
+    
+  v_raise_percentage 
+    NUMBER(2) := '&raise_percentage';
 
 BEGIN
   SELECT department_name
@@ -212,7 +216,9 @@ END;
 DECLARE
    v_department_name departments.department_name%type;
    v_perc            number(3);
-   v_department_id   employees.department_id%type := &departementid;
+   
+   v_department_id   
+     employees.department_id%type := &departementid;
 BEGIN
   SELECT department_name
   INTO v_department_name
@@ -239,7 +245,9 @@ BEGIN
   SET salary = salary * (1 + v_perc/100)
   WHERE department_id = v_department_id;
 
-  DBMS_OUTPUT.PUT_LINE('aantal salarisverhogingen : ' || sql%rowcount);
+  DBMS_OUTPUT.PUT_LINE(
+    'aantal salarisverhogingen : ' || sql%rowcount
+  );
   DBMS_OUTPUT.PUT_LINE('situatie na wijziging:');
 
   FOR lijn IN (SELECT last_name, employee_id, salary
