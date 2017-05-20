@@ -24,7 +24,8 @@
 CREATE OR REPLACE PROCEDURE plan_flitsacties
 ( p_nieuwe_flitsacties  OUT NUMBER )
 IS
-  TYPE table_gemeente         IS TABLE OF gemeente%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE table_gemeente
+    IS TABLE OF gemeente%ROWTYPE INDEX BY PLS_INTEGER;
 
   v_geplande_datum            flitsen.wanneer%TYPE;
   v_gemeentes_niet_geflitst   table_gemeente;
@@ -48,23 +49,37 @@ BEGIN
 
   IF v_gemeentes_niet_geflitst.COUNT > 100000
     THEN      
-      DBMS_OUTPUT.PUT_LINE('Aantal gemeente waar nog geen flitsacties plaatsvonden: ' || v_gemeentes_niet_geflitst.COUNT);
+      DBMS_OUTPUT.PUT_LINE(
+        'Aantal gemeente met geen flitsacties: ' 
+        || v_gemeentes_niet_geflitst.COUNT
+      );
       DBMS_OUTPUT.PUT_LINE('Nieuw geplande flitsacties: ');
       DBMS_OUTPUT.NEW_LINE();
 
       FOR i in 1.. v_gemeentes_niet_geflitst.COUNT LOOP        
-        INSERT INTO flitsen VALUES(v_max_id,v_gemeentes_niet_geflitst(i).postcode,v_geplande_datum);
+        INSERT INTO flitsen 
+        VALUES(
+          v_max_id,v_gemeentes_niet_geflitst(i).postcode,
+          v_geplande_datum
+        );
 
         v_geplande_datum := v_geplande_datum + 1;
         v_max_id := v_max_id + 1;
 
-        DBMS_OUTPUT.PUT_LINE(v_gemeentes_niet_geflitst(i).gemeente ||' '|| v_geplande_datum);
-        DBMS_OUTPUT.PUT_LINE(v_gemeentes_niet_geflitst(i).postcode);
+        DBMS_OUTPUT.PUT_LINE(
+          v_gemeentes_niet_geflitst(i).gemeente 
+          ||' '|| v_geplande_datum
+        );
+        DBMS_OUTPUT.PUT_LINE(
+          v_gemeentes_niet_geflitst(i).postcode
+        );
         DBMS_OUTPUT.NEW_LINE();
 
       END LOOP;
   ELSE
-      DBMS_OUTPUT.PUT_LINE('Alle gemeenten zijn reeds aan bod gekomen.');
+      DBMS_OUTPUT.PUT_LINE(
+        'Alle gemeenten reeds aan bod gekomen.'
+      );
 
       SELECT waar
       INTO v_postcode_langst
@@ -75,7 +90,12 @@ BEGIN
       INSERT INTO flitsen
       VALUES(v_max_id,v_postcode_langst,v_geplande_datum);
 
-      DBMS_OUTPUT.PUT_LINE('Nieuwe flitsactie voor: ' || v_postcode_langst || ' op '|| v_geplande_datum);
+      DBMS_OUTPUT.PUT_LINE(
+        'Nieuwe flitsactie voor: ' 
+        || v_postcode_langst 
+        || ' op '
+        || v_geplande_datum
+      );
   END IF;
   p_nieuwe_flitsacties := SQL%ROWCOUNT;
 ROLLBACK;
@@ -89,7 +109,10 @@ DECLARE
   v_nieuwe_flitsacties   NUMBER;
 BEGIN
   plan_flitsacties(v_nieuwe_flitsacties);
-  DBMS_OUTPUT.PUT_LINE('Nieuwe flitsacties: '||v_nieuwe_flitsacties);
+  DBMS_OUTPUT.PUT_LINE(
+    'Nieuwe flitsacties: '
+    ||v_nieuwe_flitsacties
+  );
 END;
 ```
 

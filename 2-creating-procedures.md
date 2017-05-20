@@ -239,8 +239,10 @@ END;
 ```sql
 CREATE OR REPLACE PROCEDURE TOON_LAATSTE_PROCEDURE_BIS
 IS
-  TYPE type_col_lijnnr_code   IS TABLE OF type_rec_lijnnr_code INDEX BY PLS_INTEGER;
-  TYPE type_rec_lijnnr_code   IS RECORD(line user_source.line%type, text user_source.text%type);
+  TYPE type_col_lijnnr_code   
+    IS TABLE OF type_rec_lijnnr_code INDEX BY PLS_INTEGER;
+  TYPE type_rec_lijnnr_code   
+    IS RECORD(line user_source.line%type, text user_source.text%type);
 
   v_laatst_gem_proc   user_objects.object_name%type ;
   r_lijnnr_code       type_rec_lijnnr_code;
@@ -251,7 +253,10 @@ BEGIN
       INTO v_laatst_gem_proc
       FROM user_objects
       WHERE created = (SELECT max(created) FROM user_objects);
-      DBMS_OUTPUT.PUT_LINE('De laatst aangemaakte procedure is '||v_laatst_gem_proc);
+      DBMS_OUTPUT.PUT_LINE(
+        'De laatst aangemaakte procedure is '
+        ||v_laatst_gem_proc
+      );
 
    SELECT line, text BULK COLLECT
       INTO t_lijnnr_code
