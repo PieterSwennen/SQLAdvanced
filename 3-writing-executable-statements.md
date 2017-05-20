@@ -23,7 +23,7 @@ BEGIN
   dbms_output.put_line(‘Het volgende region_id is ‘|| v_new_id);
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra oefening p.12
 
 > Gebruik een anoniem PL/SQL blok om volgende dingen uit te voeren:  
