@@ -26,7 +26,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('THE maximum department_id is : ' || v_max_deptno);
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 2
 
 > Modify the PL/SQL block you create in exercise 1 to insert a new department in the departments table.
