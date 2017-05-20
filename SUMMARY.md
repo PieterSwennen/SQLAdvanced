@@ -1,7 +1,8 @@
-
+# Summary
 
 ## PLSQL Fundamentals
 
+* [Introduction](README.md)
 * [1 Introduction](1-introduction.md)
 * [2 Declaring PLSQL Variables](2-declaring-plsql-variables.md)
 * [3 Writing Executable Statements](3-writing-executable-statements.md)
@@ -16,5 +17,7 @@
 * [2 Creating Procedures](2-creating-procedures.md)
 * [3 Creating Functions](3-functions.md)
 
+## PLSQL Don't Forget
 
+* [Startup](startup.md)
 
