@@ -36,11 +36,20 @@ END;
 
 ```sql
 DECLARE
-  v_emp_id      job_history.employee_id%type    :=  &employee_id;
-  v_start_datum job_history.start_date%type     :=  to_date('&startdatum','dd/mm/yyyy');
-  v_eind_datum  job_history.end_date%type       :=  to_date('&einddatum','dd/mm/yyyy');
-  v_job_id      job_history.job_id%type         :=  '&job_id';
-  v_dep_id      job_history.department_id%type  :=  &department_id;
+  v_emp_id      
+    job_history.employee_id%type    :=  &employee_id;
+  
+  v_start_datum 
+    job_history.start_date%type     :=  to_date('&startdatum','dd/mm/yyyy');
+  
+  v_eind_datum  
+    job_history.end_date%type       :=  to_date('&einddatum','dd/mm/yyyy');
+  
+  v_job_id      
+    job_history.job_id%type         :=  '&job_id';
+    
+  v_dep_id      
+    job_history.department_id%type  :=  &department_id;
 BEGIN
   INSERT
   INTO job_history VALUES
