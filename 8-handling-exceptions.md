@@ -13,7 +13,9 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('John''s last name is : ' || v_lname);
 EXCEPTION
   WHEN TOO_MANY_ROWS THEN
-    DBMS_OUTPUT.PUT_LINE('Your select statement retrieved multiple rows. Consider using a cursor');
+    DBMS_OUTPUT.PUT_LINE(
+      'Select retrieved multiple rows. Consider a cursor'
+    );
 END;
 ```
 <div style="page-break-after: always;"></div>
@@ -23,10 +25,10 @@ DECLARE
   e_insert_excep EXCEPTION;
   PRAGMA EXCEPTION_INIT(e_insert_excep, -01400);
 BEGIN
-  INSERT INTO departments( department_id,
-                              department_name
-                            )
-      VALUES(280, NULL);
+  INSERT INTO departments( 
+    department_id,
+    department_name
+  )VALUES(280, NULL);
 
 EXCEPTION
   WHEN e_insert_excep THEN
@@ -119,7 +121,9 @@ EXCEPTION
        WHEN no_data_found
         THEN dbms_output.put_line('Deze functie bestaat niet.');
        WHEN too_many_rows
-        THEN dbms_output.put_line('De functie die begint met SA komt meer dan 1 keer voor!');
+        THEN dbms_output.put_line(
+          'De functie die komt meer dan 1x voor!'
+        );
 END;
 ```
 <div style="page-break-after: always;"></div>
@@ -147,12 +151,16 @@ BEGIN
   WHERE region_id = 1;
 
 EXCEPTION
-  WHEN dup_val_on_index THEN
-    DBMS_OUTPUT.PUT_LINE('Dit land bestaat al.');
-  WHEN e_onbekende_regio THEN
-    DBMS_OUTPUT.PUT_LINE('Regio_id komt niet voor tabel REGIONS.');
-  WHEN e_del_child THEN
-    DBMS_OUTPUT.PUT_LINE('Regio_id kan niet verwijderd worden.');
+  WHEN dup_val_on_index 
+    THEN DBMS_OUTPUT.PUT_LINE('Dit land bestaat al.');
+  WHEN e_onbekende_regio 
+    THEN DBMS_OUTPUT.PUT_LINE(
+          'Regio_id komt niet voor tabel REGIONS.'
+         );
+  WHEN e_del_child 
+    THEN DBMS_OUTPUT.PUT_LINE(
+          'Regio_id kan niet verwijderd worden.'
+         );
 ROLLBACK;
 END;
 ```
@@ -162,36 +170,40 @@ END;
 
 ```sql
 DECLARE
-       v_jobtitel jobs.job_title%type;
-       v_minsal   jobs.min_salary%type;
-       v_maxsal   jobs.max_salary%type;
-       v_jobid    jobs.job_id%type;
+  v_jobtitel jobs.job_title%type;
+  v_minsal   jobs.min_salary%type;
+  v_maxsal   jobs.max_salary%type;
+  v_jobid    jobs.job_id%type;
 BEGIN
-       SELECT job_title, min_salary,max_salary
-       INTO v_jobtitel,v_minsal,v_maxsal
-       FROM jobs
-       WHERE job_title='&jobtitel';
-       dbms_output.put_line(
-         'Laagste en hoogste salaris van ' ||v_jobtitel||
-         ' is '|| v_minsal||
-         ' en '|| v_maxsal
-       );
-
-       SELECT job_id, min_salary, max_salary
-       INTO v_jobid,v_minsal,v_maxsal
-       FROM jobs
-       WHERE job_id like 'SA%';
-       dbms_output.put_line(
-         'Laagste en hoogste salaris van ' ||v_jobid||
-         ' is '|| v_minsal||
-         ' en '|| v_maxsal);
-
+  SELECT job_title, min_salary,max_salary
+  INTO v_jobtitel,v_minsal,v_maxsal
+  FROM jobs
+  WHERE job_title='&jobtitel';
+  
+  DBMS_OUTPUT.PUT_LINE(
+    'Laagste en hoogste salaris van ' ||v_jobtitel||
+    ' is '|| v_minsal||
+    ' en '|| v_maxsal
+  );
+  
+  SELECT job_id, min_salary, max_salary
+  INTO v_jobid, v_minsal, v_maxsal
+  FROM jobs
+  WHERE job_id like 'SA%';
+  DBMS_OUTPUT.PUT_LINE(
+    'Laagste en hoogste salaris van ' ||v_jobid||
+    ' is '|| v_minsal||
+    ' en '|| v_maxsal
+  );
 EXCEPTION
-       WHEN no_data_found
-       THEN raise_application_error(-20001,'Functie bestaat niet.');
-
-       WHEN too_many_rows
-       THEN raise_application_error(-20002,'Komt meer dan 1x voor!');
+  WHEN no_data_found
+    THEN raise_application_error(
+        -20001,'Functie bestaat niet.'
+       );
+  WHEN too_many_rows
+    THEN raise_application_error(
+         -20002,'Komt meer dan 1x voor!'
+       );
 END;
 ```
 
@@ -214,30 +226,31 @@ e_date        DATE NOT NULL,
 e_message     VARCHAR2(100) NOT NULL);
 
 DECLARE
-       e_geen_update            exception;
-       e_update_teveel_rijen    exception;
-       error_code               NUMBER;
-       error_message            VARCHAR2(100);
+  e_geen_update            EXCEPTION;
+  e_update_teveel_rijen    EXCEPTION;
+  error_code               NUMBER;
+  error_message            VARCHAR2(100);
 BEGIN
-       UPDATE jobs
-       SET max_salary = 20000
-       WHERE job_title LIKE '%Manager%';
-       IF sql%notfound THEN
-                     raise e_geen_update;
-       ELSIF sql%rowcount > 5 THEN
-                     raise e_update_teveel_rijen;
-       END IF;
+  UPDATE jobs
+  SET max_salary = 20000
+  WHERE job_title LIKE '%Manager%';
+  IF sql%notfound 
+    THEN RAISE e_geen_update;
+  ELSIF sql%rowcount > 5 
+    THEN raise e_update_teveel_rijen;
+  END IF;
 EXCEPTION
-       WHEN e_geen_update then
-                     raise_application_error(-20003,'Geen rijen geüpdatet!');
-       WHEN e_update_teveel_rijen THEN
-                     ROLLBACK;
-                     raise_application_error(-20004,'Teveel rijen geüpdatet. Update wordt niet uitgevoerd!');
-       WHEN others THEN
-                     error_code := sqlcode;
-                     error_message :=sqlerrm;
-                     INSERT INTO errors
-                     VALUES(user,error_code,SYSDATE,error_message);
+  WHEN e_geen_update THEN
+    raise_application_error(-20003,'Geen rijen geüpdatet!');
+       WHEN e_update_teveel_rijen 
+         THEN ROLLBACK;
+              raise_application_error(-20004,'Teveel rijen geüpdatet. Update wordt niet uitgevoerd!');
+       WHEN others 
+         THEN
+           error_code := sqlcode;
+           error_message :=sqlerrm;
+           INSERT INTO errors
+           VALUES(user,error_code,SYSDATE,error_message);
 END;
 ```
 

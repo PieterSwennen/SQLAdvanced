@@ -278,7 +278,10 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(v_lastname_table(i));
   END LOOP;
 
-  DBMS_OUTPUT.PUT_LINE('Aantal records tabel: '||v_datum_table.COUNT);
+  DBMS_OUTPUT.PUT_LINE(
+    'Aantal records tabel: '
+    ||v_datum_table.COUNT
+  );
 
   v_aantal_rijen:= v_ename_table.count;
   v_index:= v_ename_table.first;
