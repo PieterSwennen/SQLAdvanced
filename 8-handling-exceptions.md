@@ -244,7 +244,10 @@ EXCEPTION
     raise_application_error(-20003,'Geen rijen geüpdatet!');
        WHEN e_update_teveel_rijen 
          THEN ROLLBACK;
-              raise_application_error(-20004,'Teveel rijen geüpdatet. Update wordt niet uitgevoerd!');
+              raise_application_error(
+                -20004,'Teveel rijen geüpdatet. 
+                Update wordt niet uitgevoerd!'
+              );
        WHEN others 
          THEN
            error_code := sqlcode;
