@@ -6,9 +6,9 @@
 >
 > A\) Add a \*\*declarative\*\* section to this PL/SQL block.In the declarative section declare the following variables:
 >
-> 1. Variable \`v\_today\` of type \`DATE\`. Initialize today with \`SYSDATE\`.
+> 1. Variable \`**v\_today**\` of type \`DATE\`. Initialize today with \`SYSDATE\`.
 >
-> 2. Variable \`v\_tomorrow\` of type \`v\_today\`. use \`%TYPE\` attribute to declare this variable.
+> 2. Variable \`**v\_tomorrow**\` of type \`v\_today\`. use \`%TYPE\` attribute to declare this variable.
 >
 > B\) In the \*\*executable\*\* section, initialize the \`v\_tomorrow\` variable with an expression, which calculates tomorrow's date \(add one to the value in today\). Print the value of \`v\_today\` and \`v\_tomorrow\` after printeng "Hello World".
 
