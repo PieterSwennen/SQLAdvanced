@@ -149,7 +149,7 @@ SELECT *
 FROM emp;
 ```
 
-## Extra exercise 1
+## Extra oefening 1
 
 > Schrijf een anoniem blok dat het volgende doet:
 >
