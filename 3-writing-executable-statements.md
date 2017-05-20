@@ -94,10 +94,10 @@ ROLLBACK;
 --VARIABLE b_basic_percent NUMBER;
 --VARIABLE b_pf_percent NUMBER;
 DECLARE
-  v_today         DATE          :=  SYSDATE;
+  v_today         DATE          := SYSDATE;
   v_tomorrow      v_today%TYPE;
-  v_basic_percent NUMBER(10)    :=  45;
-  v_pf_percent    NUMBER(10)    :=  12;
+  v_basic_percent NUMBER(10)    := 45;
+  v_pf_percent    NUMBER(10)    := 12;
   v_fname         VARCHAR2(15);
   v_emp_sal       NUMBER(10);
 BEGIN
