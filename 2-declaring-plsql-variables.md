@@ -1,7 +1,5 @@
 # 2 Declaring PLSQL Variables
 
----
-
 ## Exercise 2
 
 > Create an anonymous block. Use the script of question 2 of practice 1 p.1-22.
