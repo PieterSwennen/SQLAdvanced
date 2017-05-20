@@ -76,9 +76,8 @@ BEGIN
 COMMIT;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 2
-
 > Execute this script to create the `emp` table
 >
 > ```sql
@@ -147,9 +146,8 @@ END;
 SELECT *
 FROM emp;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 1
-
 > Schrijf een anoniem blok dat het volgende doet:
 >
 > * je laat de gebruiker een afdelingsid ingeven en een percentage voor loonsverhoging
