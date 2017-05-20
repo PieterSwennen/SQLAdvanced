@@ -68,7 +68,7 @@ BEGIN
 END;
 ROLLBACK;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 3
 
 > Edit the script of exercise 5 in chapter 2.  
