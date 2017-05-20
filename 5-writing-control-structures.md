@@ -18,9 +18,8 @@ BEGIN
   END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exericse 1
-
 > Execute this script to create the `messages` table
 >
 > ```sql
