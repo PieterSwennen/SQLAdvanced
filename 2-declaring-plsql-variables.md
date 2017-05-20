@@ -87,7 +87,7 @@ DECLARE
   v_salary      employees.salary%type;
   v_max_sal     NUMBER(9,2);
 BEGIN
-  --meeste employee
+  --meeste employees
   SELECT MAX(COUNT(employee_id))
   INTO v_max_emp
   FROM employees
@@ -123,17 +123,14 @@ BEGIN
   WHERE d.department_name = v_dept_name;
   DBMS_OUTPUT.PUT_LINE('Hoogste salaris : '|| v_max_sal);
   -- naam voornaam salary of employees met highest salary
-  SELECT e.last_name ,
-    e.first_name,
-    e.salary
-  INTO v_lastname ,
-    v_voornaam,
-    v_salary
+  SELECT e.last_name, e.first_name, e.salary
+  INTO v_lastname, v_voornaam, v_salary
   FROM employees e
   JOIN departments d
   ON(e.department_id      = d.department_id)
   WHERE d.department_name = v_dept_name
   AND e.salary            = v_max_sal;
+  
   DBMS_OUTPUT.PUT_LINE(
     ' Naam: '||v_lastname || 
     ' Voornaam :  ' || v_voornaam || 
