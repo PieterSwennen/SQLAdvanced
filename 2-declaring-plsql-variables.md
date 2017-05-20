@@ -4,7 +4,7 @@
 
 > Create an anonymous block. Use the script of question 2 of practice 1 p.1-22.
 >
-> A\) Add a \*\*declarative\*\* section to this PL/SQL block.In the declarative section declare the following variables:
+> A\) Add a declarative section to this PL/SQL block.In the declarative section declare the following variables:
 >
 > 1. Variable \`**v\_today**\` of type \`**DATE**\`. Initialize today with \`**SYSDATE**\`.
 >
