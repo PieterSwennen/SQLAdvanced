@@ -156,9 +156,8 @@ BEGIN
     END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 1
-
 ### Deel 1
 
 > Maak tabel/collection met als key een nr en als waarde een last\_name  
@@ -184,7 +183,7 @@ BEGIN
   END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ### Deel 2
 
 > Maak tabel/collection met als key een voornaam en als waarde een datum  
@@ -226,7 +225,7 @@ BEGIN
   END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ### Deel 3
 
 > Maak tabel/collection waarin de namen \(last\_name\) van alle werknemers uit de tabel employees worden opgenomen in alfabetische volgorde druk deze namen onder elkaar af. Druk aantal records in de datum\_table. Druk alle indexen en bijhorende waarden van de ename\_table
