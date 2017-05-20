@@ -1,6 +1,4 @@
-# Summary
 
-* [Introduction](README.md)
 
 ## PLSQL Fundamentals
 
@@ -17,4 +15,6 @@
 
 * [2 Creating Procedures](2-creating-procedures.md)
 * [3 Creating Functions](3-functions.md)
+
+
 
