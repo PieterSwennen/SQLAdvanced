@@ -12,14 +12,16 @@
 * [7 Using Expliciet Cursors](7-using-expliciet-cursors.md)
 * [8 Handling Exceptions](8-handling-exceptions.md)
 
+## PLSQL Don't Forget
+
+* [Startup](startup.md)
+
 ## PLSQL Develop
 
 * [2 Creating Procedures](2-creating-procedures.md)
 * [3 Creating Functions](3-functions.md)
 
-## PLSQL Don't Forget
+## Voorbeeld Examen
 
-* [Startup](startup.md)
-
-
+* Examen Juli 2015
 
