@@ -25,6 +25,8 @@ BEGIN
 END;
 ```
 
+&lt;div&gt;&lt;/div&gt;
+
 ## Exercise 5
 
 > Edit the script of exercise 2.
