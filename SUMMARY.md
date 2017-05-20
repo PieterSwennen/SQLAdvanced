@@ -23,5 +23,5 @@
 
 ## Voorbeeld Examen
 
-* Examen Juli 2015
+* [Examen Juli 2015](voorbeeld-examen/examen-juli-2015.md)
 
