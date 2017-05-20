@@ -353,7 +353,10 @@ BEGIN
         GROUP BY department_name
         ) 
         LOOP
-          DBMS_OUTPUT.PUT_LINE(deprec.department_name || ': ' || deprec.aantal);
+          DBMS_OUTPUT.PUT_LINE(
+            deprec.department_name || ': ' || 
+            deprec.aantal
+          );
         END LOOP;
      END LOOP;
 END;
