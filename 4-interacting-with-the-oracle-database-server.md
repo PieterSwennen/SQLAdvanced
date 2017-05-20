@@ -79,7 +79,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' is inserted');
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Exercise 3
 
 > In exercise 2, you set loation+id to \`NULL\`. Create a PL/SQL block that updates the \`location\_id\` to 3000 for the new depatment. Us the local variable \`v\_dept\_id\` to update the row.  
@@ -179,7 +179,7 @@ SELECT employee_id, salary, stars
 FROM emp
 WHERE employee_id=176;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 2
 
 > Er moeten besparingen doorgevoerd worden in de firma.
