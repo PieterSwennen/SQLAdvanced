@@ -41,7 +41,7 @@ EXECUTE dbms_output.put_line(get_sal(100))
 ```sql
 SELECT job_id, get_sal(employee_id) FROM employees;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Function - Example
 ```sql
 CREATE OR REPLACE FUNCTION tax(p_value IN NUMBER)
@@ -54,7 +54,7 @@ SELECT employee_id, last_name, salary, tax(salary)
 FROM   employees
 WHERE  department_id = 100;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Named and mixed notation - Example
 ```sql
 CREATE OR REPLACE FUNCTION f(
@@ -72,7 +72,7 @@ END f;
 ```sql
 SELECT f(p_parameter_5 => 10) FROM DUAL;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Functions: voorbeeldopgave
 ### Opgave 1
 >Schrijf een functie ‘get_jubileumdatum’ om te berekenen wanneer een bepaalde werknemer 25 jaar in dienst is, en dus gevierd gaat worden.  Het feest vindt plaats op de eerste vrijdag volgend op de dag waarop hij 25 jaar in dienst is, tenzij dat net een vrijdag is, dan is het onmiddellijk feest.

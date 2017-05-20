@@ -58,7 +58,7 @@ EXCEPTION
       DBMS_OUTPUT.PUT_LINE('No such department id.');
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 1
 
 > Schrijf een anoniem PL/SQL-blok om:
@@ -122,7 +122,7 @@ EXCEPTION
         THEN dbms_output.put_line('De functie die begint met SA komt meer dan 1 keer voor!');
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 2
 
 > Schrijf een anoniem PL/SQL-blok om:

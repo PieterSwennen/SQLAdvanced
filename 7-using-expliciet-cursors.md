@@ -41,7 +41,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE(v_empno || ' ' || v_lname);
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Cursor FOR loop - Example
 
 ```sql
@@ -59,7 +59,7 @@ BEGIN
   END LOOP;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Cursor parameter - Example
 
 ```sql
