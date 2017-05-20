@@ -24,8 +24,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('Tomorrow is: ' || v_tomorrow);
 END;
 ```
-
-&lt;div&gt;&lt;/div&gt;
+<div></div>
 
 ## Exercise 5
 
