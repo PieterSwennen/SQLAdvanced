@@ -25,7 +25,6 @@ BEGIN
 END;
 ```
 <div style="page-break-after: always;"></div>
-
 ## Exercise 5
 
 > Edit the script of exercise 2.
@@ -66,7 +65,7 @@ BEGIN
   :b_basic_percent := 45;
 END;
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra oefening 1
 
 > Maak een bind variable om een department\_name te stockeren.
