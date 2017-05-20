@@ -149,7 +149,7 @@ SELECT *
 FROM emp;
 ```
 
-## Extra oefening 1
+## Extra Oefening 1
 
 > Schrijf een anoniem blok dat het volgende doet:
 >
@@ -254,7 +254,7 @@ END;
 /
 ```
 
-## Extra exercise 2
+## Extra Oefening 2
 
 > Schrijf een anoniem blok dat onderstaand overzicht maakt:  
 > per stad toon je de afdelingen die erin gevestigd zijn met hun aantal werknemers.  Toon enkel de steden waar effectief afdelingen gevestigd zijn.

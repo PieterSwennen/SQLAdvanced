@@ -150,9 +150,9 @@ BEGIN
 END;
 ```
 
-## Extra exercise 1
+## Extra Oefening 1
 
-### Part 1
+### Deel 1
 
 > Maak tabel/collection met als key een nr en als waarde een last\_name  
 >     stop er op plaats 5 en 10 een naam in  
@@ -178,7 +178,7 @@ BEGIN
 END;
 ```
 
-### Part 2
+### Deel 2
 
 > Maak tabel/collection met als key een voornaam en als waarde een datum  
 >     stop er als datum voor An in een week na vandaag en voor Jan in een maand na vandaag laat een naam ingeven en druk \(als bestaat\) de bijhorende datum af.
@@ -218,7 +218,7 @@ BEGIN
 END;
 ```
 
-### Part 3
+### Deel 3
 
 > Maak tabel/collection waarin de namen \(last\_name\) van alle werknemers uit de tabel employees worden opgenomen in alfabetische volgorde druk deze namen onder elkaar af. Druk aantal records in de datum\_table. Druk alle indexen en bijhorende waarden van de ename\_table
 
@@ -279,7 +279,7 @@ BEGIN
 END;
 ```
 
-## Extra exercise 2
+## Extra Oefening 2
 
 > Gebruik een collection om bepaalde gegevens van alle departementen die gevestigd zijn in de US af te drukken.
 

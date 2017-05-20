@@ -61,7 +61,7 @@ EXCEPTION
 END;
 ```
 
-## Extra Exercise 1
+## Extra Oefening 1
 
 > Schrijf een anoniem PL/SQL-blok om:
 >
@@ -117,7 +117,7 @@ EXCEPTION
 END;
 ```
 
-## Extra Exercise 2
+## Extra Oefening 2
 
 > Schrijf een anoniem PL/SQL-blok om:
 >

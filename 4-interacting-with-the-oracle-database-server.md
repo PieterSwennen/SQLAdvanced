@@ -180,7 +180,7 @@ FROM emp
 WHERE employee_id=176;
 ```
 
-## Extra oefening 2
+## Extra Oefening 2
 
 > Er moeten besparingen doorgevoerd worden in de firma.
 >
