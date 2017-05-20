@@ -250,16 +250,17 @@ BEGIN
 END;
 /
 ```
-
+<div style="page-break-after: always;"></div>
 ## Extra Oefening 2
-
 > Schrijf een anoniem blok dat onderstaand overzicht maakt:  
 > per stad toon je de afdelingen die erin gevestigd zijn met hun aantal werknemers.  Toon enkel de steden waar effectief afdelingen gevestigd zijn.
 
 ```sql
 DECLARE
-  TYPE location_table_type IS TABLE OF locations%ROWTYPE INDEX BY PLS_INTEGER;
-  TYPE department_table_type IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE location_table_type 
+    IS TABLE OF locations%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE department_table_type 
+    IS TABLE OF departments%ROWTYPE INDEX BY PLS_INTEGER;
 
   v_locations     location_table_type;
   v_departments   department_table_type;
