@@ -246,7 +246,6 @@ IS
 
   v_laatst_gem_proc   user_objects.object_name%type ;
   r_lijnnr_code       type_rec_lijnnr_code;
-  t_lijnnr_code       type_col_lijnnr_code;
 
 BEGIN
    SELECT object_name
