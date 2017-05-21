@@ -10,7 +10,7 @@ IS
   v_dept_id     dept.department_id%TYPE;
   v_dept_name   dept.department_name%TYPE;
 BEGIN
-  v_dept_id   :=280;
+  v_dept_id   := 280;
   v_dept_name :='ST-Curriculum';
   INSERT
   INTO dept
