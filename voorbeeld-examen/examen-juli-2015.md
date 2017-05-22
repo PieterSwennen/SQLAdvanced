@@ -47,7 +47,7 @@ BEGIN
   v_geplande_datum  := add_months(SYSDATE, 1);
   v_geplande_datum  := TRUNC(v_geplande_datum, 'iw') + 5;
 
-  IF v_gemeentes_niet_geflitst.COUNT > 100000
+  IF v_gemeentes_niet_geflitst.COUNT > 0
     THEN      
       DBMS_OUTPUT.PUT_LINE(
         'Aantal gemeente met geen flitsacties: ' 
