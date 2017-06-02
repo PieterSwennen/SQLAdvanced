@@ -145,7 +145,10 @@ BEGIN
         v_minpostcode := v_postcode;
 
         INSERT INTO flitsen
-        VALUES (flitsen_id_seq.nextval,v_postcode, v_flitsdatum);
+        VALUES (
+          flitsen_id_seq.nextval,
+          v_postcode, 
+          v_flitsdatum);
 
 				v_flitsdatum := v_flitsdatum + 1;
       END LOOP;
