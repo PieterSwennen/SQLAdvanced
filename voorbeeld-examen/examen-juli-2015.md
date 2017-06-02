@@ -70,7 +70,7 @@ BEGIN
         DBMS_OUTPUT.NEW_LINE();
 
       END LOOP;
-			p_nieuwe_flitsacties := v_gemeentes_niet_geflitst.COUNT;
+	p_nieuwe_flitsacties := v_gemeentes_niet_geflitst.COUNT;
   ELSE
       DBMS_OUTPUT.PUT_LINE('Alle gemeenten zijn reeds aan bod gekomen.');
 
@@ -81,14 +81,15 @@ BEGIN
                         FROM flitsen);
 
       INSERT INTO flitsen
-      VALUES(v_max_id,v_postcode_langst,v_geplande_datum);
+      VALUES(v_max_id,
+             v_postcode_langst,
+             v_geplande_datum);
 
       DBMS_OUTPUT.PUT_LINE(
-					'Nieuwe flitsactie voor: ' ||
-					 v_postcode_langst || ' op '||
-					 v_geplande_datum
-				 );
-			p_nieuwe_flitsacties := SQL%ROWCOUNT;
+        'Nieuwe flitsactie voor: ' ||
+	 v_postcode_langst || ' op '||
+	 v_geplande_datum);
+      p_nieuwe_flitsacties := SQL%ROWCOUNT;
   END IF;
 ROLLBACK;
 END;
