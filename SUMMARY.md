@@ -16,6 +16,7 @@
 
 * [2 Creating Procedures](2-creating-procedures.md)
 * [3 Creating Functions](3-functions.md)
+* [9 Triggers](9-triggers.md)
 
 ## Voorbeeld Examen
 
