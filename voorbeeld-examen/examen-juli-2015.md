@@ -62,8 +62,11 @@ BEGIN
         v_geplande_datum := v_geplande_datum + 1;
         v_max_id := v_max_id + 1;
 
-        DBMS_OUTPUT.PUT_LINE(v_gemeentes_niet_geflitst(i).gemeente ||' '|| v_geplande_datum);
-        DBMS_OUTPUT.PUT_LINE(v_gemeentes_niet_geflitst(i).postcode);
+        DBMS_OUTPUT.PUT_LINE(
+          v_gemeentes_niet_geflitst(i).gemeente 
+          ||' '|| v_geplande_datum);
+        DBMS_OUTPUT.PUT_LINE(
+          v_gemeentes_niet_geflitst(i).postcode);
         DBMS_OUTPUT.NEW_LINE();
 
       END LOOP;
