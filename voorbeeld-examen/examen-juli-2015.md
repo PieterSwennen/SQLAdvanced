@@ -21,7 +21,8 @@ Maak hiervoor een bind variabele aan.
 CREATE OR REPLACE PROCEDURE plan_flitsacties
 ( p_nieuwe_flitsacties  OUT NUMBER )
 IS
-  TYPE table_gemeente         IS TABLE OF gemeente%ROWTYPE INDEX BY PLS_INTEGER;
+  TYPE table_gemeente         
+    IS TABLE OF gemeente%ROWTYPE INDEX BY PLS_INTEGER;
   v_geplande_datum            flitsen.wanneer%TYPE;
   v_gemeentes_niet_geflitst   table_gemeente;
   v_max_id                    NUMBER;
