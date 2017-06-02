@@ -54,8 +54,11 @@ BEGIN
       DBMS_OUTPUT.NEW_LINE();
 
       FOR i in 1.. v_gemeentes_niet_geflitst.COUNT LOOP        
-        INSERT INTO flitsen VALUES(v_max_id,v_gemeentes_niet_geflitst(i).postcode,v_geplande_datum);
-
+        INSERT INTO flitsen
+        VALUES(v_max_id, 
+               v_gemeentes_niet_geflitst(i).postcode,
+               v_geplande_datum);
+               
         v_geplande_datum := v_geplande_datum + 1;
         v_max_id := v_max_id + 1;
 
