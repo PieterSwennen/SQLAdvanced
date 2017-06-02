@@ -154,7 +154,9 @@ BEGIN
       END LOOP;
       p_toeg := v_aantal;
     ELSE
-		DBMS_OUTPUT.PUT_LINE('In elke gemeente werd al ooit geflitst. FLITSPLANNING:');
+      DBMS_OUTPUT.PUT_LINE(
+      'In elke gemeente werd al ooit geflitst.
+      FLITSPLANNING:');
 
       SELECT waar
       INTO v_postcode
@@ -167,4 +169,4 @@ BEGIN
       p_toeg := sql%rowcount;
   END IF;
 END;
-```
+``
