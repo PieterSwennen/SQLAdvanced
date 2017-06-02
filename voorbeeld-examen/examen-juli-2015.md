@@ -46,7 +46,10 @@ BEGIN
 
   IF v_gemeentes_niet_geflitst.COUNT > 0
     THEN      
-      DBMS_OUTPUT.PUT_LINE('Aantal gemeente waar nog geen flitsacties plaatsvonden: ' || v_gemeentes_niet_geflitst.COUNT);
+      DBMS_OUTPUT.PUT_LINE(
+        'Aantal gemeente zonder flitsacties: '   
+        ||  v_gemeentes_niet_geflitst.COUNT
+        );
       DBMS_OUTPUT.PUT_LINE('Nieuw geplande flitsacties: ');
       DBMS_OUTPUT.NEW_LINE();
 
